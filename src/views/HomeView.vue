@@ -1,3 +1,5 @@
+<!-- eslint-disable vue/no-unused-vars -->
+<!-- eslint-disable vue/valid-v-for -->
 <template>
   <div class="home">
     <div>
@@ -7,12 +9,17 @@
       <p> {{result}}</p>
     </div>
     <div>
- 
       <h3>Iteration 3 | Show an element only if a particular property is set to true</h3>
       <button @click="signedIn = !signedIn">Click and Show</button>
       <br/>
       <button  v-show="!signedIn">Is signedIn is FALSE, show this</button>
       <button  v-show="signedIn">Is signedIn is TRUE, show this</button>
+    </div>
+    <div>
+      <h3>Iteration 4 | Display a list of elements that are stored inside a component</h3>
+      <div class="posts">
+        <PostC  v-for="post in posts" :title="post.title" :description="post.description" :content="post.content" :idPost="post.id" :key="post.id"/>
+      </div>
     </div>
 
   </div>
@@ -20,15 +27,43 @@
 
 <script>
 // @ is an alias to /src
-
-
+import PostC from '@/components/PostC.vue'
 export default {
   name: 'HomeView',
+  components: {
+    PostC
+  },
   data() {
     return {
       num1:0,
       num2:1,
-      signedIn:false
+      signedIn:false,
+      posts: [
+        {
+          id: 1,
+          title:"Título",
+          description:"Description",
+          content: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"
+        },
+         {
+          id: 2,
+          title:"Título",
+          description:"Description",
+          content: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"
+        },
+         {
+          id: 3,
+          title:"Título",
+          description:"Description",
+          content: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"
+        },
+         {
+          id: 4,
+          title:"Título",
+          description:"Description",
+          content: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"
+        },
+      ]
     }
   },
   computed: {
@@ -39,3 +74,13 @@ export default {
 
 }
 </script>
+
+
+<style lang="scss">
+.posts {
+   display:flex; 
+   margin: 0 auto;
+   max-width:600px;
+   width:100%;
+}
+</style>
