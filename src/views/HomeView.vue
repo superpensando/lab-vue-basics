@@ -21,6 +21,13 @@
         <PostC  v-for="post in posts" :title="post.title" :description="post.description" :content="post.content" :idPost="post.id" :key="post.id"/>
       </div>
     </div>
+    <div>
+      <h3>Iteration 5 | Bonus | Change the background color of an element when pressing a button</h3>
+      <div>
+        <div :class="changeColor ? 'isChangeColor' : ''">Cambio de color</div>
+        <button @click="changeColor = !changeColor">Click for change Color</button>
+      </div>
+    </div>
 
   </div>
 </template>
@@ -38,6 +45,7 @@ export default {
       num1:0,
       num2:1,
       signedIn:false,
+      changeColor:false,
       posts: [
         {
           id: 1,
@@ -70,7 +78,7 @@ export default {
     result() {
       return this.num1 + this.num2;
     }
-  }
+  },
 
 }
 </script>
@@ -82,5 +90,12 @@ export default {
    margin: 0 auto;
    max-width:600px;
    width:100%;
+}
+.isChangeColor {
+  max-width:600px;
+  width:100%;
+  background-color: green;
+  color:white;
+  margin:0 auto; 
 }
 </style>
