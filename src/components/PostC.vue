@@ -5,6 +5,7 @@
             <div>
                 {{ content }} - {{ idPost }}
             </div>
+            <button @click="addNumber">Count</button>
     </div>
 </template>
 
@@ -16,7 +17,13 @@ export default {
         title: String,
         description: String,
         content: String,
+    },
+    methods: {
+        addNumber() {
+            this.$emit("childClick");
+        }
     }
+ 
 }
 </script>
 

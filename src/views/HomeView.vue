@@ -18,8 +18,17 @@
     <div>
       <h3>Iteration 4 | Display a list of elements that are stored inside a component</h3>
       <div class="posts">
-        <PostC  v-for="post in posts" :title="post.title" :description="post.description" :content="post.content" :idPost="post.id" :key="post.id"/>
+        <PostC  v-for="post in posts" 
+        :title="post.title" 
+        :description="post.description" 
+        :content="post.content" 
+        :idPost="post.id" 
+        :key="post.id"
+        @childClick="addNumber"/>
+        <br/>
+        <br/>
       </div>
+      <p>My number is {{ number }} </p>
     </div>
     <div>
       <h3>Iteration 5 | Bonus | Change the background color of an element when pressing a button</h3>
@@ -46,6 +55,7 @@ export default {
       num2:1,
       signedIn:false,
       changeColor:false,
+      number: 0, 
       posts: [
         {
           id: 1,
@@ -79,6 +89,11 @@ export default {
       return this.num1 + this.num2;
     }
   },
+  methods: {
+    addNumber() {
+      this.number++;
+    }
+  }
 
 }
 </script>
